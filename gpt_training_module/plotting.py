@@ -13,7 +13,11 @@ def plot_losses(epochs_seen, tokens_seen, train_losses, val_losses):
     ax1.xaxis.set_major_locator(MaxNLocator(integer=True))
     ax2 = ax1.twiny()
     ax2.plot(tokens_seen, train_losses, alpha=0)
-    ax2.set_xlabel("Tokens seen")
+    ax2.set_xlabel("Fine Tuning")
+
+    # Added title with padding (pad) to prevent overlapping with "Tokens seen"
+    ax1.set_title("Finetuning LLM", fontsize=12, fontweight="bold", pad=15)
+
     fig.tight_layout()
     plt.show()
 
