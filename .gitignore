@@ -42,7 +42,7 @@ htmlcov/
 *.safetensors
 
 # Downloaded pretrained model files (re-download via gpt_download.py)
-gpt_training_module/notebooks/gpt2/
+gpt2/
 
 # IDE / editor
 .idea/
