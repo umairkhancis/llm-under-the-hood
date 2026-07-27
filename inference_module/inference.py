@@ -5,6 +5,10 @@ import tiktoken
 import torch
 import chainlit
 
+# Chainlit loads this file as a standalone module, so the repo root is not on
+# sys.path and the working directory is wherever `chainlit run` was invoked.
+MODULE_DIR = Path(__file__).resolve().parent
+sys.path.insert(0, str(MODULE_DIR.parent))
 
 from gpt_module.gpt import GPTModel
 from embeddings_module.embeddings import text_to_token_ids, token_ids_to_text
@@ -29,7 +33,7 @@ def get_model_and_tokenizer():
 
     tokenizer = tiktoken.get_encoding("gpt2")
 
-    model_path = Path("finetuned-weights") / "gpt2-medium355M-sft.pth"
+    model_path = MODULE_DIR / "finetuned-weights" / "gpt2-medium355M-sft.pth"
     print(model_path)
     
     if not model_path.exists():
@@ -46,21 +50,14 @@ def get_model_and_tokenizer():
 
     return tokenizer, model, GPT_CONFIG_355M
 
-
 def extract_response(response_text, input_text):
     return response_text[len(input_text):].replace("### Response:", "").strip()
-
 
 # Obtain the necessary tokenizer and model files for the chainlit function below
 tokenizer, model, model_config = get_model_and_tokenizer()
 
-
 @chainlit.on_message
 async def main(message: chainlit.Message):
-    """
-    The main Chainlit function.
-    """
-
     torch.manual_seed(123)
 
     prompt = f"""Below is an instruction that describes a task. Write a response
@@ -70,9 +67,9 @@ async def main(message: chainlit.Message):
     {message.content}
     """
 
-    token_ids = text_generation_app(  # function uses `with torch.no_grad()` internally already
+    token_ids = text_generation_app(
         model=model,
-        input_text=text_to_token_ids(prompt, tokenizer).to(device),  # The user text is provided via as `message.content`
+        input_text=text_to_token_ids(prompt, tokenizer).to(device),
         max_new_tokens=35,
         context_window_size=model_config["context_window_size"],
         eos_id=50256
@@ -82,5 +79,5 @@ async def main(message: chainlit.Message):
     response = extract_response(text, prompt)
 
     await chainlit.Message(
-        content=f"{response}",  # This returns the model response to the interface
+        content=f"{response}",
     ).send()
