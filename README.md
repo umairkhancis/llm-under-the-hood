@@ -44,9 +44,18 @@ cd llm-under-the-hood
 
 python -m venv .venv
 source .venv/bin/activate
-pip install -r requirements.txt
 
+pip install -r requirements.txt
+```
+
+Read & Practice with Computational Essays:
+```
 jupyter lab
+```
+
+Run the Final Chainlit UI App:
+```
+chainlit run inference_module/inference.py --headless
 ```
 
 Key dependencies: **PyTorch** (the model), **tiktoken** (GPT-2's BPE tokenizer), **TensorFlow** (only to read OpenAI's original checkpoint files), **matplotlib/pandas** (plots and data wrangling).
