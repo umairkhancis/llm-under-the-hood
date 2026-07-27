@@ -4,7 +4,18 @@ A hands-on journey toward *tafahhum* (تفهم) — a deep, earned understanding
 
 > _After reading these computational essays, the terms used in the above sentence will not remain obscured._
 
-Nothing here is a black box. The repo follows one continuous path, each stage built on the previous: turning text into **token embeddings**, letting tokens see each other through **self-attention**, widening that view with **causal multi-head attention**, stacking it all into the **transformer blocks** of a full GPT model, **pretraining** it on raw text (then loading OpenAI's GPT-2 weights), **fine-tuning it to follow instructions**, and finally serving the finetuned model behind a **chat UI** with Chainlit. Every stage is a runnable computational essay paired with the module code it explains.
+Nothing here is a black box. 
+
+The repo follows one continuous path, each stage built on the previous: 
+1. turning text into **token embeddings**,
+2. letting tokens see each other through **self-attention**,
+3. widening that view with **causal multi-head attention**,
+4. stacking it all into the **transformer blocks** of a full GPT model,
+5. **pretraining** it on raw text (then loading OpenAI's GPT-2 weights),
+6. **fine-tuning it to follow instructions**, and
+7. finally serving the finetuned model behind a **chat UI** with Chainlit.
+
+Every stage is a runnable computational essay paired with the module code it explains.
 
 ## Suggested learning path
 
