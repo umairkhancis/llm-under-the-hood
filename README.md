@@ -17,6 +17,14 @@ The repo follows one continuous path, each stage built on the previous:
 
 Every stage is a runnable computational essay paired with the module code it explains.
 
+## `Umair-GPT` behind UI Application
+
+<img width="1507" height="857" alt="Screenshot 2026-07-27 at 6 03 35 PM" src="https://github.com/user-attachments/assets/0592b9fb-77da-4ccf-b650-8f4ca8157e3e" />
+
+## Video Demo
+
+https://github.com/user-attachments/assets/1ec30eb7-8809-4905-8c97-bd411d9009a2
+
 ## Suggested learning path
 
 Follow the computational essays in this order — each stage builds directly on the previous one:
