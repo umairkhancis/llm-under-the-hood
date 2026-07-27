@@ -44,6 +44,10 @@ htmlcov/
 # Downloaded pretrained model files (re-download via gpt_download.py)
 gpt2/
 
+# Chainlit generated files
+.chainlit/
+chainlit.md
+
 # IDE / editor
 .idea/
 .vscode/
