@@ -36,8 +36,6 @@ Follow the computational essays in this order — each stage builds directly on 
 | 11 | Fine-tuning (classification & instruction) | `finetuning-module/notebooks/finetuning-essay.ipynb` |
 | 12 | Serving the model behind a chat UI | `inference_module/inference.py` (`chainlit run inference_module/inference.py`) |
 
-The `*-practice.ipynb` files are exercise/scratch companions to the essays.
-
 ## Setup
 
 ```bash
