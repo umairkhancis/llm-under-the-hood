@@ -2,7 +2,7 @@
 
 A hands-on journey toward *tafahhum* (تفهم) — a deep, earned understanding of Large Language Models (LLMs), by building GPT (Generative Pretrained Transformer), which is based on the decoder-only transformer architecture, from scratch in PyTorch.
 
-_After reading these computational essays, the terms used in the above sentence will not remain obscured._
+> _After reading these computational essays, the terms used in the above sentence will not remain obscured._
 
 Nothing here is a black box. The repo follows one continuous path, each stage built on the previous: turning text into **token embeddings**, letting tokens see each other through **self-attention**, widening that view with **causal multi-head attention**, stacking it all into the **transformer blocks** of a full GPT model, **pretraining** it on raw text (then loading OpenAI's GPT-2 weights), **fine-tuning it to follow instructions**, and finally serving the finetuned model behind a **chat UI** with Chainlit. Every stage is a runnable computational essay paired with the module code it explains.
 
