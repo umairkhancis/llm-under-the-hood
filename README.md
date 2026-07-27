@@ -1,31 +1,16 @@
 # LLM Under the Hood
 
-Building a GPT-style large language model **from scratch, in PyTorch** — to understand exactly what happens under the hood: how text becomes tokens, how attention works, how a transformer block is wired, how the model is trained, and how pretrained open weights are loaded and fine-tuned.
+A hands-on journey toward *tafahhum* (تفهم) — a deep, earned understanding of Large Language Models (LLMs), by building GPT (Generative Pretrained Transformer), which is based on the decoder-only transformer architecture, from scratch in PyTorch.
 
-The material follows the spirit of Sebastian Raschka's book [*Build a Large Language Model From Scratch*](https://github.com/rasbt/LLMs-from-scratch), but is organized as a series of **essay notebooks** — each one a narrated, runnable walkthrough of a single concept — plus clean, reusable Python modules extracted from them.
+_After reading these computational essays, the terms used in the above sentence will not remain obscured._
 
-## How this repo is organized
-
-Each stage of the LLM pipeline lives in its own module. Inside each module:
-
-- `notebooks/` — the **essay notebooks**: read these top-to-bottom, run every cell. They contain the explanations, diagrams, and experiments.
-- `*.py` files at the module root — the **distilled code**: once a concept is worked out in a notebook, the final classes/functions are extracted here so later modules can import them (e.g. the GPT model imports `TransformerBlock`, which imports `MultiHeadAttention`).
-
-```
-embeddings_module/          Tokenization, BPE, token & positional embeddings
-attention_mechanism_module/ Self-attention → causal attention → multi-head attention
-transformer_module/         TransformerBlock: LayerNorm, GELU, FeedForward, shortcuts
-gpt_module/                 The full GPTModel assembled from the pieces above
-data_loader_module/         Sliding-window dataset & dataloader for next-token training
-gpt_training_module/        Pretraining loop, loss, text decoding, loading GPT-2 weights
-finetuning-module/          Classification & instruction fine-tuning of the pretrained model
-```
+Nothing here is a black box. The repo follows one continuous path, each stage built on the previous: turning text into **token embeddings**, letting tokens see each other through **self-attention**, widening that view with **causal multi-head attention**, stacking it all into the **transformer blocks** of a full GPT model, **pretraining** it on raw text (then loading OpenAI's GPT-2 weights), **fine-tuning it to follow instructions**, and finally serving the finetuned model behind a **chat UI** with Chainlit. Every stage is a runnable computational essay paired with the module code it explains.
 
 ## Suggested learning path
 
-Follow the notebooks in this order — each stage builds directly on the previous one:
+Follow the computational essays in this order — each stage builds directly on the previous one:
 
-| # | Topic | Notebook |
+| # | Topic | Computational essay |
 |---|-------|----------|
 | 1 | Tokenization & embeddings | `embeddings_module/notebooks/tokenization-embedding-essay.ipynb` |
 | 2 | Simple self-attention | `attention_mechanism_module/notebooks/essay.ipynb` |
@@ -38,23 +23,9 @@ Follow the notebooks in this order — each stage builds directly on the previou
 | 9 | Text decoding strategies (temperature, top-k) | `gpt_training_module/notebooks/text-decoding-essay.ipynb` |
 | 10 | Loading OpenAI's GPT-2 open weights | `gpt_training_module/notebooks/open-weights-essay.ipynb` |
 | 11 | Fine-tuning (classification & instruction) | `finetuning-module/notebooks/finetuning-essay.ipynb` |
+| 12 | Serving the model behind a chat UI | `inference_module/inference.py` (`chainlit run inference_module/inference.py`) |
 
-The `*-practice.ipynb` notebooks are exercise/scratch companions to the essays.
-
-## The big picture
-
-By the end of the path you will have built and understood this data flow:
-
-```
-text ──tokenizer──▶ token IDs ──tok_emb + pos_emb──▶ embeddings
-      ──▶ [ TransformerBlock × N ]           each block:
-             LayerNorm → Multi-Head Attention → +shortcut
-             LayerNorm → FeedForward (GELU)   → +shortcut
-      ──▶ final LayerNorm ──out_head──▶ logits over vocabulary
-      ──cross-entropy vs next token──▶ loss ──▶ backprop ──▶ trained weights
-```
-
-…and then reused it three ways: trained from scratch on a small corpus, loaded with OpenAI's GPT-2 124M/355M checkpoints, and fine-tuned for spam classification and instruction following.
+The `*-practice.ipynb` files are exercise/scratch companions to the essays.
 
 ## Setup
 
@@ -73,7 +44,7 @@ Key dependencies: **PyTorch** (the model), **tiktoken** (GPT-2's BPE tokenizer),
 
 ### A note on imports
 
-The notebooks import earlier modules by adding the repo root to the path:
+The computational essays import earlier modules by adding the repo root to the path:
 
 ```python
 import sys
@@ -84,7 +55,7 @@ from transformer_module import TransformerBlock
 from gpt_module import GPTModel
 ```
 
-Run notebooks from their own directory (the default in Jupyter) so the relative paths to `data/` and `images/` resolve.
+Run each computational essay from its own directory (the default in Jupyter) so the relative paths to `data/` and `images/` resolve.
 
 ### Large files are not in the repo
 
