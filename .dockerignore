@@ -1,0 +1,7 @@
+.git
+.venv
+.chainlit
+**/__pycache__
+**/notebooks
+**/*.ipynb
+inference_module/finetuned-weights
