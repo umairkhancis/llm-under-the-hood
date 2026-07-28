@@ -42,7 +42,7 @@ Follow the computational essays in this order — each stage builds directly on 
 | 9 | Text decoding strategies (temperature, top-k) | `gpt_training_module/notebooks/text-decoding-essay.ipynb` |
 | 10 | Loading OpenAI's GPT-2 open weights | `gpt_training_module/notebooks/open-weights-essay.ipynb` |
 | 11 | Fine-tuning (classification & instruction) | `finetuning-module/notebooks/finetuning-essay.ipynb` |
-| 12 | Serving the model behind a chat UI | `inference_module/inference.py` (`chainlit run inference_module/inference.py`) |
+| 12 | Serving the model behind a chat UI | `app.py` (`chainlit run app.py`) |
 
 ## Setup
 
@@ -63,7 +63,7 @@ jupyter lab
 
 Run the Final Chainlit UI App:
 ```
-chainlit run inference_module/inference.py --headless
+chainlit run app.py --headless
 ```
 
 Key dependencies: **PyTorch** (the model), **tiktoken** (GPT-2's BPE tokenizer), **TensorFlow** (only to read OpenAI's original checkpoint files), **matplotlib/pandas** (plots and data wrangling).

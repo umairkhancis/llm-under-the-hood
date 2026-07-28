@@ -3,12 +3,10 @@ import sys
 
 import tiktoken
 import torch
-import chainlit
 
-# Chainlit loads this file as a standalone module, so the repo root is not on
-# sys.path and the working directory is wherever `chainlit run` was invoked.
+# The finetuned weights always live inside this module's directory, regardless
+# of where the app was launched from.
 MODULE_DIR = Path(__file__).resolve().parent
-sys.path.insert(0, str(MODULE_DIR.parent))
 
 from gpt_module.gpt import GPTModel
 from embeddings_module.embeddings import text_to_token_ids, token_ids_to_text
@@ -35,7 +33,7 @@ def get_model_and_tokenizer():
 
     model_path = MODULE_DIR / "finetuned-weights" / "gpt2-medium355M-sft.pth"
     print(model_path)
-    
+
     if not model_path.exists():
         print(
             f"Could not find the {model_path} file. Please run the chapter 7 code "
@@ -43,7 +41,7 @@ def get_model_and_tokenizer():
         )
         sys.exit()
     checkpoint = torch.load(model_path, weights_only=True)
-    
+
     model = GPTModel(GPT_CONFIG_355M)
     model.load_state_dict(checkpoint)
     model.to(device)
@@ -53,18 +51,18 @@ def get_model_and_tokenizer():
 def extract_response(response_text, input_text):
     return response_text[len(input_text):].replace("### Response:", "").strip()
 
-# Obtain the necessary tokenizer and model files for the chainlit function below
+# Load once at import time so the app starts with the model ready, rather than
+# reloading the weights on every message.
 tokenizer, model, model_config = get_model_and_tokenizer()
 
-@chainlit.on_message
-async def main(message: chainlit.Message):
+def generate_response(instruction):
     torch.manual_seed(123)
 
     prompt = f"""Below is an instruction that describes a task. Write a response
     that appropriately completes the request.
 
     ### Instruction:
-    {message.content}
+    {instruction}
     """
 
     token_ids = text_generation_app(
@@ -76,8 +74,4 @@ async def main(message: chainlit.Message):
     )
 
     text = token_ids_to_text(token_ids, tokenizer)
-    response = extract_response(text, prompt)
-
-    await chainlit.Message(
-        content=f"{response}",
-    ).send()
+    return extract_response(text, prompt)
