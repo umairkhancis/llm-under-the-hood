@@ -29,20 +29,20 @@ https://github.com/user-attachments/assets/1ec30eb7-8809-4905-8c97-bd411d9009a2
 
 Follow the computational essays in this order — each stage builds directly on the previous one:
 
-| # | Topic | Computational essay |
-|---|-------|----------|
-| 1 | [Tokenization & embeddings](https://github.com/umairkhancis/llm-under-the-hood/blob/main/embeddings_module/notebooks/tokenization-embedding-essay.ipynb) | `embeddings_module/notebooks/tokenization-embedding-essay.ipynb` |
-| 2 | [Simple self-attention](https://github.com/umairkhancis/llm-under-the-hood/blob/main/attention_mechanism_module/notebooks/essay.ipynb) | `attention_mechanism_module/notebooks/essay.ipynb` |
-| 3 | [Trainable attention weights](https://github.com/umairkhancis/llm-under-the-hood/blob/main/attention_mechanism_module/notebooks/trainable-attention-essay.ipynb) | `attention_mechanism_module/notebooks/trainable-attention-essay.ipynb` |
-| 4 | [Causal (masked) attention](https://github.com/umairkhancis/llm-under-the-hood/blob/main/attention_mechanism_module/notebooks/causal-attention-essay.ipynb) | `attention_mechanism_module/notebooks/causal-attention-essay.ipynb` |
-| 5 | [Multi-head attention](https://github.com/umairkhancis/llm-under-the-hood/blob/main/attention_mechanism_module/notebooks/multihead-attention-essay.ipynb) | `attention_mechanism_module/notebooks/multihead-attention-essay.ipynb` |
-| 6 | [The transformer block](https://github.com/umairkhancis/llm-under-the-hood/blob/main/gpt_module/notebooks/transformer-block-essay.ipynb) | `gpt_module/notebooks/transformer-block-essay.ipynb` |
-| 7 | [The full GPT model](https://github.com/umairkhancis/llm-under-the-hood/blob/main/gpt_module/notebooks/gpt-model-essay.ipynb) | `gpt_module/notebooks/gpt-model-essay.ipynb` |
-| 8 | [Pretraining the model](https://github.com/umairkhancis/llm-under-the-hood/blob/main/gpt_training_module/notebooks/gpt-training-essay.ipynb) | `gpt_training_module/notebooks/gpt-training-essay.ipynb` |
-| 9 | [Text decoding strategies (temperature, top-k)](https://github.com/umairkhancis/llm-under-the-hood/blob/main/gpt_training_module/notebooks/text-decoding-essay.ipynb) | `gpt_training_module/notebooks/text-decoding-essay.ipynb` |
-| 10 | [Loading OpenAI's GPT-2 open weights](https://github.com/umairkhancis/llm-under-the-hood/blob/main/gpt_training_module/notebooks/open-weights-essay.ipynb) | `gpt_training_module/notebooks/open-weights-essay.ipynb` |
-| 11 | [Fine-tuning (classification & instruction)](https://github.com/umairkhancis/llm-under-the-hood/blob/main/finetuning-module/notebooks/finetuning-essay.ipynb) | `finetuning-module/notebooks/finetuning-essay.ipynb` |
-| 12 | [Serving the model behind a chat UI](https://github.com/umairkhancis/llm-under-the-hood/blob/main/app.py) | `app.py` (`chainlit run app.py`) |
+| # | Topic | Learning outcome |
+|---|-------|------------------|
+| 1 | [Tokenization & embeddings](https://github.com/umairkhancis/llm-under-the-hood/blob/main/embeddings_module/notebooks/tokenization-embedding-essay.ipynb) | Understand how raw text becomes numbers — split into tokens and mapped to trainable embedding vectors that capture meaning and position. |
+| 2 | [Simple self-attention](https://github.com/umairkhancis/llm-under-the-hood/blob/main/attention_mechanism_module/notebooks/essay.ipynb) | See why attention replaced RNNs and compute the simplest form of it: dot-product similarity between raw embeddings turned into context vectors. |
+| 3 | [Trainable attention weights](https://github.com/umairkhancis/llm-under-the-hood/blob/main/attention_mechanism_module/notebooks/trainable-attention-essay.ipynb) | Introduce the learnable query, key, and value matrices so the model can learn *how* words should attend to each other, not just how similar they are. |
+| 4 | [Causal (masked) attention](https://github.com/umairkhancis/llm-under-the-hood/blob/main/attention_mechanism_module/notebooks/causal-attention-essay.ipynb) | Mask out future tokens so each position only attends to the past — the property that lets a decoder-only model predict the next token. |
+| 5 | [Multi-head attention](https://github.com/umairkhancis/llm-under-the-hood/blob/main/attention_mechanism_module/notebooks/multihead-attention-essay.ipynb) | Run several attention heads in parallel so each can specialize in different linguistic patterns, yielding richer contextual representations. |
+| 6 | [The transformer block](https://github.com/umairkhancis/llm-under-the-hood/blob/main/gpt_module/notebooks/transformer-block-essay.ipynb) | Wrap attention with layer normalization, feed-forward layers, and residual (shortcut) connections into the repeatable block transformers are made of. |
+| 7 | [The full GPT model](https://github.com/umairkhancis/llm-under-the-hood/blob/main/gpt_module/notebooks/gpt-model-essay.ipynb) | Stack embeddings and transformer blocks into a complete `GPTModel` and generate text autoregressively, one next token at a time. |
+| 8 | [Pretraining the model](https://github.com/umairkhancis/llm-under-the-hood/blob/main/gpt_training_module/notebooks/gpt-training-essay.ipynb) | Quantify output quality with a cross-entropy loss and write the training loop that pretrains the model on raw text until it produces coherent language. |
+| 9 | [Text decoding strategies (temperature, top-k)](https://github.com/umairkhancis/llm-under-the-hood/blob/main/gpt_training_module/notebooks/text-decoding-essay.ipynb) | Turn raw logits into "creative" text — control randomness and diversity of generation with temperature scaling and top-k sampling. |
+| 10 | [Loading OpenAI's GPT-2 open weights](https://github.com/umairkhancis/llm-under-the-hood/blob/main/gpt_training_module/notebooks/open-weights-essay.ipynb) | Load OpenAI's pretrained GPT-2 weights into our own implementation — leveraging their training budget instead of paying for pretraining ourselves. |
+| 11 | [Fine-tuning (classification & instruction)](https://github.com/umairkhancis/llm-under-the-hood/blob/main/finetuning-module/notebooks/finetuning-essay.ipynb) | Fine-tune the pretrained model on labeled data — turning a next-token predictor into a classifier and an instruction-following assistant. |
+| 12 | [Serving the model behind a chat UI](https://github.com/umairkhancis/llm-under-the-hood/blob/main/app.py) | Serve the finetuned model behind a Chainlit chat interface (`chainlit run app.py`) — from tensors to a working AI assistant. |
 
 ## Setup
 
