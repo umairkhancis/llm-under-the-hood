@@ -31,18 +31,18 @@ Follow the computational essays in this order — each stage builds directly on 
 
 | # | Topic | Computational essay |
 |---|-------|----------|
-| 1 | Tokenization & embeddings | `embeddings_module/notebooks/tokenization-embedding-essay.ipynb` |
-| 2 | Simple self-attention | `attention_mechanism_module/notebooks/essay.ipynb` |
-| 3 | Trainable attention weights | `attention_mechanism_module/notebooks/trainable-attention-essay.ipynb` |
-| 4 | Causal (masked) attention | `attention_mechanism_module/notebooks/causal-attention-essay.ipynb` |
-| 5 | Multi-head attention | `attention_mechanism_module/notebooks/multihead-attention-essay.ipynb` |
-| 6 | The transformer block | `gpt_module/notebooks/transformer-block-essay.ipynb` |
-| 7 | The full GPT model | `gpt_module/notebooks/gpt-model-essay.ipynb` |
-| 8 | Pretraining the model | `gpt_training_module/notebooks/gpt-training-essay.ipynb` |
-| 9 | Text decoding strategies (temperature, top-k) | `gpt_training_module/notebooks/text-decoding-essay.ipynb` |
-| 10 | Loading OpenAI's GPT-2 open weights | `gpt_training_module/notebooks/open-weights-essay.ipynb` |
-| 11 | Fine-tuning (classification & instruction) | `finetuning-module/notebooks/finetuning-essay.ipynb` |
-| 12 | Serving the model behind a chat UI | `app.py` (`chainlit run app.py`) |
+| 1 | [Tokenization & embeddings](https://github.com/umairkhancis/llm-under-the-hood/blob/main/embeddings_module/notebooks/tokenization-embedding-essay.ipynb) | `embeddings_module/notebooks/tokenization-embedding-essay.ipynb` |
+| 2 | [Simple self-attention](https://github.com/umairkhancis/llm-under-the-hood/blob/main/attention_mechanism_module/notebooks/essay.ipynb) | `attention_mechanism_module/notebooks/essay.ipynb` |
+| 3 | [Trainable attention weights](https://github.com/umairkhancis/llm-under-the-hood/blob/main/attention_mechanism_module/notebooks/trainable-attention-essay.ipynb) | `attention_mechanism_module/notebooks/trainable-attention-essay.ipynb` |
+| 4 | [Causal (masked) attention](https://github.com/umairkhancis/llm-under-the-hood/blob/main/attention_mechanism_module/notebooks/causal-attention-essay.ipynb) | `attention_mechanism_module/notebooks/causal-attention-essay.ipynb` |
+| 5 | [Multi-head attention](https://github.com/umairkhancis/llm-under-the-hood/blob/main/attention_mechanism_module/notebooks/multihead-attention-essay.ipynb) | `attention_mechanism_module/notebooks/multihead-attention-essay.ipynb` |
+| 6 | [The transformer block](https://github.com/umairkhancis/llm-under-the-hood/blob/main/gpt_module/notebooks/transformer-block-essay.ipynb) | `gpt_module/notebooks/transformer-block-essay.ipynb` |
+| 7 | [The full GPT model](https://github.com/umairkhancis/llm-under-the-hood/blob/main/gpt_module/notebooks/gpt-model-essay.ipynb) | `gpt_module/notebooks/gpt-model-essay.ipynb` |
+| 8 | [Pretraining the model](https://github.com/umairkhancis/llm-under-the-hood/blob/main/gpt_training_module/notebooks/gpt-training-essay.ipynb) | `gpt_training_module/notebooks/gpt-training-essay.ipynb` |
+| 9 | [Text decoding strategies (temperature, top-k)](https://github.com/umairkhancis/llm-under-the-hood/blob/main/gpt_training_module/notebooks/text-decoding-essay.ipynb) | `gpt_training_module/notebooks/text-decoding-essay.ipynb` |
+| 10 | [Loading OpenAI's GPT-2 open weights](https://github.com/umairkhancis/llm-under-the-hood/blob/main/gpt_training_module/notebooks/open-weights-essay.ipynb) | `gpt_training_module/notebooks/open-weights-essay.ipynb` |
+| 11 | [Fine-tuning (classification & instruction)](https://github.com/umairkhancis/llm-under-the-hood/blob/main/finetuning-module/notebooks/finetuning-essay.ipynb) | `finetuning-module/notebooks/finetuning-essay.ipynb` |
+| 12 | [Serving the model behind a chat UI](https://github.com/umairkhancis/llm-under-the-hood/blob/main/app.py) | `app.py` (`chainlit run app.py`) |
 
 ## Setup
 
